@@ -19,10 +19,12 @@ alias la='ls -la'
 alias create_zip='zip -9 -y -r -q'
 
 # GIT
-alias gs='git status'
+alias ga='git add'
 alias gc='git commit'
 alias gd='git diff'
 alias gdc='git diff --cached'
+alias gp='git push'
+alias gs='git status'
 
 # configuration
 export EDITOR='vim'
