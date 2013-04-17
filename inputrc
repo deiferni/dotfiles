@@ -1,0 +1,9 @@
+# search through history with up/down arrow based on already entered command
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+set show-all-if-ambiguous on
+set completion-ignore-case on
+
+# use alt-left/right to move the cursor by word
+"^[[1;9C": forward-word
+"^[^[[D": backward-word
