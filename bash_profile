@@ -1,5 +1,3 @@
-alias starwars='telnet towel.blinkenlights.nl'
-
 export PYTHON24="/Users/deif/bin/python2.4"
 export PYTHON27="/Users/deif/bin/python2.7"
 
@@ -25,6 +23,10 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias gp='git push'
 alias gs='git status'
+
+# fun
+alias beer='echo -e "\xF0\x9f\x8d\xba"'
+alias starwars='telnet towel.blinkenlights.nl'
 
 # configuration
 export EDITOR='vim'
