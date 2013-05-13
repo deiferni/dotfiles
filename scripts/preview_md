@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+filename=${1%.rst}.html
+markdown $1 >> $filename && open $filename && sleep 3 && rm $filename
