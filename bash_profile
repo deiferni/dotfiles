@@ -15,6 +15,7 @@ alias ls='ls -G'
 alias ll='ls -hl'
 alias la='ls -la'
 alias create_zip='zip -9 -y -r -q'
+alias st='open $1 -a sourcetree'
 
 # GIT
 alias ga='git add'
