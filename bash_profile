@@ -25,6 +25,9 @@ alias gdc='git diff --cached'
 alias gp='git push'
 alias gs='git status'
 
+# xcode
+alias ios="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
+
 # fun
 alias beer='echo -e "\xF0\x9f\x8d\xba"'
 alias starwars='telnet towel.blinkenlights.nl'
