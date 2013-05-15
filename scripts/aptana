@@ -1,0 +1,11 @@
+#!/bin/sh
+# open multiple aptana instances simultaneously.
+# recipe adapted from: http://distriqt.com/post/844
+
+if [ -n "$1" ]; then
+    echo "Starting eclipse: WORKSPACE: " $1
+    open -n /Applications/Aptana\ Studio\ 3/AptanaStudio3.app/ --args -data /Users/deif/Files/workspaces/$1
+else
+    echo "Starting eclipse: WORKSPACE: " `pwd`
+    open -n /Applications/Aptana\ Studio\ 3/AptanaStudio3.app/
+fi
