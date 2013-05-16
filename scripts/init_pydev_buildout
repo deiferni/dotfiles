@@ -1,0 +1,106 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+
+
+template = """[buildout]
+extends =
+    {bases}
+
+parts +=
+    pydev
+
+eggs +=
+    Products.PrintingMailHost
+
+sources-dir = ${{buildout:directory}}/..
+sources = sources
+
+[pydev]
+recipe = pb.recipes.pydev
+eggs = ${{{eggs}:eggs}}
+extra_paths =
+    ${{buildout:directory}}/parts/omelette
+use_sources_path = True
+
+[sources]
+pb.recipes.pydev = git git@github.com:collective/pb.recipes.pydev.git
+"""
+
+
+def main():
+    parser = make_parser()
+    args = parser.parse_args()
+    validate_args(args, parser)
+    generate_config_file(args, parser)
+
+
+def make_parser():
+    """Create an argument parser.
+    """
+
+    parser = argparse.ArgumentParser(description='Initialize pydev project '
+                                                 'buildout configuration.')
+    parser.add_argument('bases',
+                        nargs='+',
+                        help='The config files from which we extend. Must be a '
+                        'list of files that exist in the current directory.')
+    parser.add_argument('-e', '--eggs',
+                        default='instance1',
+                        help='Buildout part name from where eggs are taken.', )
+    parser.add_argument('-o', '--outfile',
+                        default='pydev-development.cfg',
+                        help='Filename of the generated configuration file..',
+                        )
+    parser.add_argument('-l', '--createlink',
+                        action='store_true',
+                        help='Create symlink from buildout.cfg to outfile.')
+    return parser
+
+
+def validate_args(args, parser):
+    """Validate pased arguments further.
+    """
+
+    cwd = os.getcwd()
+
+    for base in args.bases:
+        path = os.path.abspath(os.path.join(cwd, base))
+        if not os.path.exists(path):
+            parser.error('File does not exist: {}'.format(path))
+
+        if not os.path.isfile(path):
+            parser.error('Not a File: {}'.format(path))
+
+    if args.createlink:
+        path = os.path.abspath(os.path.join(cwd, 'buildout.cfg'))
+        if os.path.exists(path) and not os.path.islink(path):
+            parser.error('Not a symlink, cannot remove safely: {}'.format(path))
+
+
+
+def generate_config_file(args, parser):
+    """Generate pydev buildout config file.
+    """
+
+    content = template.format(bases='\n    '.join(args.bases),
+                                   eggs=args.eggs)
+
+    cwd = os.getcwd()
+    outfilepath = os.path.abspath(os.path.join(cwd, args.outfile))
+    symlinkpath = os.path.abspath(os.path.join(cwd, 'buildout.cfg'))
+
+    with open(outfilepath, 'w') as outfile:
+        outfile.write(content)
+
+    if not args.createlink:
+        return
+    if os.path.exists(symlinkpath):
+        assert os.path.islink(symlinkpath)
+        os.remove(symlinkpath)
+    os.symlink(outfilepath, symlinkpath)
+
+
+if __name__ == "__main__":
+    main()
