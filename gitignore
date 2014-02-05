@@ -1,3 +1,5 @@
+pb.recipes.pydev
+
 # Compiled source #
 ###################
 *.com
@@ -67,6 +69,7 @@ Thumbs.db
 .pydevproject.bak
 .settings
 pydev-development.cfg
+my-development.cfg
 
 # Buildout generated folders #
 ##############################
