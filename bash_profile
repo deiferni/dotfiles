@@ -25,6 +25,9 @@ alias gdc='git diff --cached'
 alias gp='git push'
 alias gs='git status'
 
+#sublime
+alias slime='subl'
+
 alias delete_merged_branches='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 
 # xcode
