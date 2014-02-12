@@ -69,6 +69,10 @@ Thumbs.db
 pydev-development.cfg
 my-development.cfg
 
+# Sublime related #
+###################
+.codeintel
+
 # Buildout generated folders #
 ##############################
 bin
