@@ -25,7 +25,20 @@ alias gdc='git diff --cached'
 alias gp='git push'
 alias gs='git status'
 
-#sublime
+# sublime
+function project_aware_subl {
+    if [[ $# -ge 1 ]]; then
+        project_file=$(ls $1/*.sublime-project 2>/dev/null | head -n 1)
+        if [[ -z $project_file ]]; then
+            cmd="subl $@"
+        else
+            shift
+            cmd="subl $project_file $@"
+        fi
+        $cmd
+    fi
+}
+alias subl="project_aware_subl"
 alias slime='subl'
 
 alias delete_merged_branches='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
