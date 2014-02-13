@@ -35,8 +35,10 @@ function project_aware_subl {
             shift
             cmd="subl $project_file $@"
         fi
-        $cmd
+    else
+        cmd="subl"
     fi
+    $cmd
 }
 alias subl="project_aware_subl"
 alias slime='subl'
