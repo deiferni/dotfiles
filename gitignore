@@ -72,6 +72,8 @@ my-development.cfg
 # Sublime related #
 ###################
 .codeintel
+*.sublime-project
+*.sublime-workspace
 
 # Buildout generated folders #
 ##############################
