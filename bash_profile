@@ -10,6 +10,9 @@ export LC_ALL=en_US.UTF-8
 alias ls='ls --color'
 alias grep='grep --colour'
 
+# increase open file limit
+ulimit -n 1024
+
 # - generic aliases
 alias ls='ls -G'
 alias ll='ls -hl'
