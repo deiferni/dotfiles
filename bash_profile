@@ -1,3 +1,5 @@
+source /Users/deif/Files/dotfiles/completion/git-completion.bash
+
 export PYTHON24="/Users/deif/bin/python2.4"
 export PYTHON27="/Users/deif/bin/python2.7"
 
@@ -59,7 +61,7 @@ alias starwars='telnet towel.blinkenlights.nl'
 export EDITOR='vim'
 
 # change the window title and set colorful PS1
-PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"; PS1="\[\033[01;32m\]\u@${HOSTNAME%%.*}\[\033[01;34m\] \w `scm_prompt`\$\[\033[00m\] "'
+PROMPT_COMMAND='history -a; history -r; echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"; PS1="\[\033[01;32m\]\u@${HOSTNAME%%.*}\[\033[01;34m\] \w `scm_prompt`\$\[\033[00m\] "'
 
 #env
 alias sandbox_env='source /Users/deif/Library/VirtualEnv/sandbox/bin/activate'
