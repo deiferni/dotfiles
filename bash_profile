@@ -48,8 +48,6 @@ function project_aware_subl {
 alias subl="project_aware_subl"
 alias slime='subl'
 
-alias delete_merged_branches='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
-
 # xcode
 alias ios="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
 
@@ -69,3 +67,8 @@ alias sandbox='cd /Users/deif/Files/workspaces/sandbox/ && sandbox_env && mate .
 
 export FIGNORE=".svn:.git:.egg-info:.DS_Store"
 
+# Oracle
+export ORACLE_HOME=/Users/deif/Library/OracleInstantClient_10_2
+export PATH=$PATH:/Users/deif/Library/OracleInstantClient_10_2/
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${ORACLE_HOME}/lib
+export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}:${ORACLE_HOME}/lib
