@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ ! -f bootstrap.py ]; then
+    echo "no bootstrap.py, does not look like a buildout directory, aborting."
+    exit 1
+fi
+
+if [ -f my-development.cfg ]; then
+    echo "my-development.cfg already present, aborting."
+    exit 1
+fi
+
+if [ -f buildout.cfg ]; then
+    echo "buildout.cfg already present, aborting."
+    exit 1
+fi
+
+touch my-development.cfg
+cat >my-development.cfg <<EOL
+[buildout]
+extends =
+    development.cfg
+
+[instance]
+eggs +=
+    pudb
+    
+[test]
+eggs +=
+    pudb
+EOL
+
+echo "creataed my-development.cfg."
+
+ln -s my-development.cfg buildout.cfg 
+echo "created symlink from my-development.cfg to buildout.cfg."
+
+echo "bootstraping ..."
+python bootstrap.py
+
+echo "buildouting ..."
+bin/buildout
