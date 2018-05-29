@@ -40,7 +40,6 @@
 .DS_Store
 .DS_Store?
 ehthumbs.db
-Icon?
 Thumbs.db
 *.tmproj
 
@@ -63,6 +62,7 @@ Thumbs.db
 *.egg
 .mr.developer.cfg
 .installed.cfg
+.flake8
 
 # Eclipse pydev related #
 #########################
@@ -71,7 +71,9 @@ Thumbs.db
 .pydevproject.bak
 .settings
 pydev-development.cfg
+my-buildout.cfg
 my-development.cfg
+my-multisite-development.cfg
 my-legacy-development.cfg
 
 # Sublime related #

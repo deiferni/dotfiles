@@ -7,6 +7,9 @@ if [ ! -f bootstrap.py ]; then
     exit 1
 fi
 
+echo "updating .flake8 config."
+wget https://raw.githubusercontent.com/4teamwork/ftw-buildouts/master/pycodestyle.cfg -O .flake8 && sed -i '' 's/\[pycodestyle\]/\[flake8\]/g' .flake8
+
 if [ -f my-development.cfg ]; then
     echo "my-development.cfg already present, aborting."
     exit 1
